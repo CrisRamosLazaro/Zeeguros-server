@@ -1,4 +1,6 @@
 const User = require('./../models/User.model')
+
+
 const signUp = (req, res, next) => {
 
     const { email, password, username, firstName, lastName, avatar } = req.body
@@ -16,6 +18,8 @@ const signUp = (req, res, next) => {
             next(err)
         })
 }
+
+
 const logIn = (req, res, next) => {
 
     const { email, password } = req.body
@@ -43,9 +47,13 @@ const logIn = (req, res, next) => {
         })
         .catch(err => next(err))
 }
+
+
 const verify = (req, res, next) => {
     res.status(200).json(req.payload)
 }
+
+
 module.exports = {
     signUp,
     logIn,

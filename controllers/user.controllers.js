@@ -1,4 +1,6 @@
 const User = require("../models/User.model")
+
+
 const getAllUsers = (req, res, next) => {
 
     User

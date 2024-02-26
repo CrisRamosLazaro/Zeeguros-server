@@ -8,6 +8,17 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET
 })
 
-const storage = new CloudinaryStorage({ cloudinary })
+const storage = new CloudinaryStorage({
+    cloudinary,
+    params: (req) => {
+        let folderName = "Zeeguros"
+        if (req.route.path === "/avatar") {
+            folderName = "avatars"
+        } else if (req.route.path === "/policy") {
+            folderName = "policies"
+        }
+        return { folder: folderName }
+    },
+})
 
 module.exports = multer({ storage })
